@@ -1,4 +1,5 @@
 const express = require('express');
+const mongoose = require('mongoose');
 const dotenv = require('dotenv').config();
 const goalRouter = require('./routes/goalRoute/goalRoutes');
 const {errorHandler} = require('./middleware/errorMiddleware');
@@ -13,6 +14,16 @@ app.use(express.urlencoded({extended: false}));
 app.use('/api/goals', goalRouter);
 app.use(errorHandler);
 
+
+
+mongoose.connect('mongodb+srv://raju:raju@cluster0.9hka3.mongodb.net/myFirstTestDatabase?retryWrites=true&w=majority', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+}).then(()=>{
+    console.log("Database connected");
+}).catch(err => {
+    console.log(err);
+})
 
 
 app.listen(PORT, () => {
