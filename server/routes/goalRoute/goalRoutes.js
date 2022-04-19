@@ -9,7 +9,7 @@ const {
 const goalRouter = express.Router();
 
 goalRouter.route('/').get(getGoals).post(setGoals)
-goalRouter.route('/').put(updateGoals).delete(deleteGoals)
+goalRouter.route('/:id').put(updateGoals).delete(deleteGoals)
 
 // goalRouter.get('/', getGoals)
 // goalRouter.post('/', setGoals)
